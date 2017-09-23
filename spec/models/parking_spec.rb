@@ -20,5 +20,22 @@ RSpec.describe Parking, type: :model do
      end
    end
 
+# 普通费用测试
+  describe ".calculate_amount普通费用 " do
+    it " 30 mins should be ¥2 钱不能算错" do
+      t = Time.now
+      parking = Parking.new(:parking_type => "guest", :start_at => t, :end_at => t + 30.minutes )
+      parking.calculate_amount
+      expect(parking.amount).to eq(200)
+    end
+
+     it " 60 mins should be 2块钱" do
+       t = Time.now
+       parking = Parking.new( :parking_type => "guest", :start_at => t, :end_at => t + 60.minutes )
+       parking.calculate_amount
+       expect( parking.amount ).to eq(200)
+     end 
+
+  end
 
 end

@@ -18,7 +18,9 @@ class Parking < ApplicationRecord
   def calculate_amount
     # 如果有开始时间和结束时间，则可以计算价格
     if amount.blank? && start_at.present? && end_at.present?
-      self.amount = 9487 # TODO：等会再处理
+      if duration <= 60
+        self.amount = 200
+      end
     end
   end
 end
