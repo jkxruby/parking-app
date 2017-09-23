@@ -6,7 +6,7 @@ class CreateParkings < ActiveRecord::Migration[5.0]
       t.datetime :end_at     # 结束时间
       t.integer :amount      # 总金额
 
-      t.integer :user_id, index: true 
+      t.integer :user_id, index: true
 
       t.timestamps
     end
