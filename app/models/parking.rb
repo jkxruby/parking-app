@@ -12,6 +12,6 @@ class Parking < ApplicationRecord
     if ( end_at.blank? && amount.present? )
       errors.add(:end_at, "有金额必须有结束时间")
     end
-  end 
+  end
 
 end
