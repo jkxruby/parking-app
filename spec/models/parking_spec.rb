@@ -55,7 +55,7 @@ RSpec.describe Parking, type: :model do
        parking = Parking.new( :parking_type => "guest", :start_at => t, :end_at => t + 120.minutes )
        parking.calculate_amount
        expect( parking.amount ).to eq(400)
-     end 
+     end
 
   end
 
