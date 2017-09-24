@@ -4,7 +4,7 @@ class Parking < ApplicationRecord
 
   validate :validate_end_at_with_amount
 
-  belongs_to :user, :optional => true 
+  belongs_to :user, :optional => true
 
   def validate_end_at_with_amount
     errors.add(:amount, "有结束时间就必须有金额") if end_at.present? && amount.blank?
@@ -30,12 +30,13 @@ class Parking < ApplicationRecord
     #    total += ( left_duration.to_f / 30 ).ceil * 100
     #  end
     #  self.amount = total
+          factor = (self.user.present?)? 50 : 100
 
        if self.amount.blank? && self.start_at.present? && self.end_at.present?
          if duration <= 60
            self.amount = 200
          else
-           self.amount = 200 + ((duration - 60).to_f / 30).ceil * 100
+           self.amount = 200 + ((duration - 60).to_f / 30).ceil * factor
          end
     end
 
