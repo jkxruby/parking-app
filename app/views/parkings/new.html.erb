@@ -1,8 +1,21 @@
-
 <br><br>
 <div class="col-md-10 col-md-offset-1">
-<h1>滨湖停车计费系统</h1>
-<%= form_for @parking do |f| %>
-<p><%= f.submit "开始计费", class: "btn btn-primary " %></p>
-<% end %>
+  <h1>滨湖停车计费系统</h1>
+  <%= form_for @parking do |f| %>
+
+  <% if current_user %>
+  <label>
+    <%= f.radio_button :parking_type, "short-term" %>
+    短期计费
+  </label>
+  <label>
+    <%= f.radio_button :parking_type, "long-term" %>
+    长期计费
+  </label>
+<% else %>
+  一般计费
+  <% end %>
+
+  <p><%= f.submit "开始计费", class: "btn btn-primary " %></p>
+  <% end %>
 </div>
