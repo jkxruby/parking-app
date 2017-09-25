@@ -30,6 +30,12 @@ class Parking < ApplicationRecord
     #    total += ( left_duration.to_f / 30 ).ceil * 100
     #  end
     #  self.amount = total
+# 除错方法
+  puts "------"
+  puts self.parking_type
+  puts "-------"
+
+
     if self.amount.blank? && self.start_at.present? && self.end_at.present?
       if self.user.blank?
         self.amount = calculate_guest_term_amount  # 一般费率
